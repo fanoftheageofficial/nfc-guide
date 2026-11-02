@@ -9,162 +9,174 @@
 <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Oswald:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
   :root{
-    --white:#ffffff;
-    --navy:#1c2b4a;
-    --red:#c4262e;
-    --cream:#f6efdc;
-    --ink:#161b2e;
-    --muted:#5a6277;
-    --line:rgba(28,43,74,0.22);
+    --paper:#ffffff;
+    --cream:#fff6dc;
+    --black:#111111;
+    --red:#d4271f;
+    --red-dark:#a81c15;
+    --yellow:#f4b81a;
+    --green:#1f7a4a;
+    --muted:#555555;
   }
   *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
   html,body{margin:0; padding:0;}
   body{
-    background:var(--white);
-    color:var(--ink);
+    background:var(--paper);
+    color:var(--black);
     font-family:'Zen Kaku Gothic New', sans-serif;
     line-height:1.7;
     overflow-x:hidden;
   }
   .wrap{max-width:520px; margin:0 auto; padding:0 20px;}
 
-  /* ---------- stripe ---------- */
-  .stripe{
-    height:12px;
-    background:repeating-linear-gradient(90deg, var(--red) 0 24px, var(--white) 24px 48px);
-  }
-
   /* ---------- hero ---------- */
-  .hero{background:var(--navy); color:var(--cream); text-align:center; padding:30px 0 0;}
-  .stars{font-size:13px; letter-spacing:.7em; color:var(--cream); opacity:.9; padding-left:.7em;}
+  .hero{
+    position:relative; text-align:center; padding:22px 0 0; overflow:hidden;
+    background:repeating-conic-gradient(from 0deg at 50% 24%, #ffffff 0 7.5deg, #fdecbd 7.5deg 15deg);
+    border-bottom:6px solid var(--black);
+  }
+  .hero-art{display:block; width:210px; height:auto; margin:0 auto;}
   .eyebrow{
-    font-family:'Oswald',sans-serif; font-weight:600; letter-spacing:.32em; font-size:13px;
-    color:var(--cream); margin:14px 0 4px; text-transform:uppercase;
+    display:inline-block; margin:10px 0 6px; padding:1px 14px;
+    background:var(--black); color:var(--yellow);
+    font-family:'Oswald',sans-serif; font-weight:600; letter-spacing:.3em; font-size:12px; text-transform:uppercase;
+    padding-left:calc(14px + .3em);
   }
   .title-en{
     font-family:'Alfa Slab One', serif; font-weight:400;
-    font-size:64px; line-height:1; margin:0; color:var(--cream);
-    text-shadow:3px 3px 0 var(--red);
+    font-size:60px; line-height:1.05; margin:0; color:var(--yellow);
+    -webkit-text-stroke:9px var(--black); paint-order:stroke fill; stroke-linejoin:round;
+    text-shadow:5px 6px 0 var(--black);
   }
   .ribbon{
-    display:inline-block; position:relative; margin:18px 0 12px;
-    background:var(--red); color:var(--white);
-    font-weight:900; font-size:19px; letter-spacing:.14em;
-    padding:7px 30px;
+    position:relative; z-index:0; display:inline-block; margin:22px 0 14px;
+    background:var(--red); color:#fff;
+    border:3px solid var(--black);
+    font-weight:900; font-size:19px; letter-spacing:.14em; padding:5px 28px;
+    box-shadow:0 4px 0 var(--black);
   }
   .ribbon::before,.ribbon::after{
-    content:''; position:absolute; top:7px; width:0; height:0; border-style:solid;
+    content:''; position:absolute; z-index:-1; top:10px; width:30px; height:100%;
+    background:var(--red-dark); border:3px solid var(--black);
   }
-  .ribbon::before{left:-14px; border-width:15px 14px 15px 0; border-color:var(--red) transparent var(--red) transparent;}
-  .ribbon::after{right:-14px; border-width:15px 0 15px 14px; border-color:var(--red) transparent var(--red) transparent;}
-  .sub{font-size:14px; color:var(--cream); opacity:.88; margin:0; padding:0 24px 28px;}
+  .ribbon::before{left:-24px;}
+  .ribbon::after{right:-24px;}
+  .sub{
+    margin:0; padding:0 24px 26px; font-size:14px; font-weight:700; color:var(--black);
+  }
 
   /* ---------- sections ---------- */
-  .sec{padding:34px 20px 0;}
-  .sec-head{
-    display:flex; align-items:center; gap:12px; padding-bottom:10px; margin-bottom:18px;
-    border-bottom:4px double var(--navy);
-  }
+  .sec{padding:36px 20px 0;}
+  .sec-head{display:flex; align-items:center; gap:10px; margin-bottom:20px;}
+  .sec-head::after{content:''; flex:1; height:0; border-top:4px solid var(--black); min-width:12px;}
   .sec-num{
-    flex:0 0 auto; width:34px; height:34px; border-radius:50%;
-    background:var(--red); color:var(--white);
-    font-family:'Oswald',sans-serif; font-weight:700; font-size:16px;
+    flex:0 0 auto; width:38px; height:38px; border-radius:50%;
+    background:var(--red); color:#fff; border:3px solid var(--black);
+    font-family:'Alfa Slab One',serif; font-size:17px;
     display:flex; align-items:center; justify-content:center;
+    box-shadow:2px 2px 0 var(--black);
   }
-  .sec-title{font-weight:900; font-size:21px; color:var(--navy); letter-spacing:.04em;}
+  .sec-title{
+    background:var(--yellow); border:3px solid var(--black);
+    font-weight:900; font-size:19px; letter-spacing:.04em; padding:2px 14px;
+    box-shadow:4px 4px 0 var(--black);
+  }
 
   /* ---------- prep ---------- */
-  .prep-grid{display:grid; gap:10px;}
+  .prep-grid{display:grid; gap:12px;}
   .prep-card{
-    background:var(--white); border:2px solid var(--navy); border-radius:4px;
-    box-shadow:4px 4px 0 var(--navy);
+    background:#fff; border:3px solid var(--black); border-radius:6px;
+    box-shadow:5px 5px 0 var(--black);
     padding:12px 16px; display:flex; align-items:center; gap:14px;
   }
   .prep-icon{flex:0 0 auto; font-size:24px;}
-  .prep-body b{display:block; color:var(--navy); font-size:15px; font-weight:900;}
-  .prep-body span{font-size:13px; color:var(--muted);}
-  .store-row{display:flex; gap:12px; margin-top:20px;}
+  .prep-body b{display:block; font-size:15px; font-weight:900;}
+  .prep-body span{font-size:13px; color:var(--muted); font-weight:500;}
+  .store-row{display:flex; gap:12px; margin-top:22px;}
   .store-btn{
     flex:1; text-align:center; text-decoration:none;
     font-family:'Oswald',sans-serif; font-weight:600; font-size:15px; letter-spacing:.06em;
-    color:var(--white); background:var(--navy);
-    border-radius:4px; padding:10px 8px; box-shadow:3px 3px 0 var(--red);
+    color:#fff; background:var(--green);
+    border:3px solid var(--black); border-radius:6px; padding:8px 8px; box-shadow:4px 4px 0 var(--black);
   }
-  .store-btn small{display:block; font-size:10px; letter-spacing:.18em; opacity:.75; margin-top:1px;}
-  .store-btn:active{transform:translate(2px,2px); box-shadow:1px 1px 0 var(--red);}
+  .store-btn small{display:block; font-size:10px; letter-spacing:.18em; opacity:.9; margin-top:1px;}
+  .store-btn:active{transform:translate(3px,3px); box-shadow:1px 1px 0 var(--black);}
 
   /* ---------- steps ---------- */
   .steps{list-style:none; margin:0; padding:0;}
-  .step{position:relative; padding:0 0 24px 52px;}
+  .step{position:relative; padding:0 0 26px 54px;}
   .step::before{
-    content:''; position:absolute; left:17px; top:36px; bottom:2px; width:0;
-    border-left:2px dashed var(--navy); opacity:.45;
+    content:''; position:absolute; left:17px; top:40px; bottom:4px; width:0;
+    border-left:4px dotted var(--black);
   }
   .step:last-child::before{display:none;}
   .step:last-child{padding-bottom:0;}
   .step-num{
-    position:absolute; left:0; top:0; width:36px; height:36px; border-radius:50%;
-    background:var(--navy); color:var(--cream);
+    position:absolute; left:0; top:0; width:38px; height:38px; border-radius:50%;
+    background:var(--red); color:#fff; border:3px solid var(--black);
     font-family:'Alfa Slab One',serif; font-size:17px;
     display:flex; align-items:center; justify-content:center;
-    border:2px solid var(--navy); box-shadow:0 0 0 3px var(--white), 0 0 0 5px var(--red);
+    box-shadow:0 0 0 3px var(--yellow), 0 0 0 6px var(--black);
+    margin:3px 0 0 3px; width:34px; height:34px;
   }
-  .step-title{font-weight:900; font-size:16px; color:var(--navy); margin-bottom:2px;}
-  .step-desc{font-size:14px; color:var(--ink);}
+  .step-title{font-weight:900; font-size:16px; margin-bottom:2px;}
+  .step-desc{font-size:14px; font-weight:500;}
   .step-desc code{
-    background:var(--cream); border:1px solid var(--line); border-radius:3px;
-    padding:1px 7px; font-family:'Zen Kaku Gothic New',sans-serif; font-weight:700; font-size:13px; color:var(--red);
+    background:#ffe9a8; border:2px solid var(--black); border-radius:3px;
+    padding:0 6px; font-family:'Zen Kaku Gothic New',sans-serif; font-weight:900; font-size:13px; color:var(--black);
   }
 
   /* ---------- caution ---------- */
   .callout{
-    position:relative; background:var(--cream); border:2px solid var(--navy); border-radius:4px;
-    padding:30px 18px 16px; box-shadow:4px 4px 0 var(--navy);
+    position:relative; background:var(--yellow); border:3px solid var(--black); border-radius:6px;
+    padding:26px 18px 16px; box-shadow:5px 5px 0 var(--black); margin-top:6px;
   }
   .callout::before{
-    content:''; position:absolute; left:0; right:0; top:0; height:12px;
-    background:repeating-linear-gradient(135deg, var(--red) 0 10px, var(--cream) 10px 20px);
-    border-bottom:2px solid var(--navy);
+    content:'CAUTION'; position:absolute; top:-15px; left:14px;
+    background:var(--black); color:var(--yellow);
+    font-family:'Oswald',sans-serif; font-weight:600; letter-spacing:.24em; font-size:12px;
+    padding:2px 12px 2px calc(12px + .24em);
   }
-  .callout b{display:block; font-size:16px; font-weight:900; color:var(--red); margin-bottom:6px;}
-  .callout p{margin:0; font-size:14px;}
+  .callout b{display:block; font-size:16.5px; font-weight:900; margin-bottom:6px;}
+  .callout p{margin:0; font-size:14px; font-weight:500;}
   .callout p+p{margin-top:8px;}
   .note{
-    margin-top:18px; padding:12px 16px; font-size:13.5px;
-    border-left:5px solid var(--red); background:var(--cream);
+    margin-top:20px; padding:12px 16px; font-size:13.5px; font-weight:500;
+    border:3px solid var(--black); border-left:10px solid var(--red); background:var(--cream); border-radius:4px;
   }
 
   /* ---------- trouble ---------- */
-  details{border:2px solid var(--navy); border-radius:4px; margin-bottom:10px; background:var(--white); overflow:hidden;}
+  details{border:3px solid var(--black); border-radius:6px; margin-bottom:12px; background:#fff; overflow:hidden; box-shadow:4px 4px 0 var(--black);}
   summary{
-    list-style:none; cursor:pointer; padding:13px 16px; font-size:14.5px; font-weight:700; color:var(--navy);
+    list-style:none; cursor:pointer; padding:12px 14px 12px 16px; font-size:14.5px; font-weight:900;
     display:flex; justify-content:space-between; align-items:center; gap:10px;
   }
   summary::-webkit-details-marker{display:none;}
   summary::after{
-    content:'+'; flex:0 0 auto; width:24px; height:24px; border-radius:50%;
-    background:var(--red); color:var(--white); font-family:'Oswald',sans-serif; font-size:17px; font-weight:700;
+    content:'+'; flex:0 0 auto; width:26px; height:26px; border-radius:50%;
+    background:var(--yellow); color:var(--black); border:3px solid var(--black);
+    font-family:'Oswald',sans-serif; font-size:17px; font-weight:700;
     display:flex; align-items:center; justify-content:center; line-height:1;
   }
   details[open] summary::after{content:'–';}
-  details[open] summary{border-bottom:1px solid var(--line);}
-  details p{margin:0; padding:12px 16px 14px; font-size:14px;}
+  details[open] summary{background:var(--cream); border-bottom:3px solid var(--black);}
+  details p{margin:0; padding:12px 16px 14px; font-size:14px; font-weight:500;}
 
   /* ---------- checklist ---------- */
   .check-item{
     display:flex; align-items:flex-start; gap:14px; padding:13px 2px;
-    border-bottom:1px dashed var(--line); cursor:pointer; user-select:none;
+    border-bottom:3px dotted var(--black); cursor:pointer; user-select:none;
   }
   .check-item:last-child{border-bottom:none;}
   .box{
-    flex:0 0 auto; width:24px; height:24px; border:2px solid var(--navy); border-radius:3px; background:var(--white);
-    display:flex; align-items:center; justify-content:center; margin-top:1px; transition:.12s;
+    flex:0 0 auto; width:26px; height:26px; border:3px solid var(--black); border-radius:4px; background:#fff;
+    display:flex; align-items:center; justify-content:center; margin-top:0; transition:.12s;
   }
   .box svg{opacity:0; transform:scale(.6); transition:.12s;}
-  .check-item.done .box{background:var(--red); border-color:var(--red);}
+  .check-item.done .box{background:var(--red);}
   .check-item.done .box svg{opacity:1; transform:scale(1);}
-  .clabel{font-size:14.5px; font-weight:500;}
-  .check-item.done .clabel{color:var(--muted); text-decoration:line-through; text-decoration-color:var(--red); text-decoration-thickness:2px;}
+  .clabel{font-size:14.5px; font-weight:700;}
+  .check-item.done .clabel{color:var(--muted); text-decoration:line-through; text-decoration-color:var(--red); text-decoration-thickness:3px;}
 
   /* ---------- reel ---------- */
   .reel-box{display:flex; justify-content:center;}
@@ -173,26 +185,39 @@
   .reel-fallback a{color:var(--muted); text-decoration:underline;}
 
   /* ---------- footer ---------- */
-  footer{margin-top:44px; background:var(--navy); color:var(--cream); text-align:center; padding:26px 20px 34px;}
-  .foot-stars{font-size:11px; letter-spacing:.7em; padding-left:.7em; opacity:.85;}
-  .foot-brand{font-family:'Alfa Slab One',serif; font-size:22px; margin-top:10px; letter-spacing:.02em;}
-  .foot-tag{font-family:'Oswald',sans-serif; font-weight:500; letter-spacing:.3em; font-size:12px; margin-top:4px; opacity:.85;}
-  .foot-ig{font-size:12.5px; margin-top:16px; opacity:.9;}
-  .foot-ig a{color:var(--cream); text-decoration:underline;}
+  footer{
+    margin-top:46px; background:var(--black); color:#fff; text-align:center;
+    padding:26px 20px 36px; border-top:6px solid var(--red);
+  }
+  .foot-stars{font-size:12px; letter-spacing:.7em; padding-left:.7em; color:var(--yellow);}
+  .foot-brand{font-family:'Alfa Slab One',serif; font-size:23px; margin-top:10px; color:var(--yellow);}
+  .foot-tag{font-family:'Oswald',sans-serif; font-weight:500; letter-spacing:.3em; font-size:12px; margin-top:4px; color:#fff;}
+  .foot-ig{font-size:12.5px; margin-top:16px; color:#ddd;}
+  .foot-ig a{color:var(--yellow); text-decoration:underline;}
 </style>
 </head>
 <body>
 
 <header class="hero">
-  <div class="stripe"></div>
-  <div class="wrap" style="padding-top:22px;">
-    <div class="stars">★ ★ ★ ★ ★</div>
+  <div class="wrap">
+    <svg class="hero-art" viewBox="0 0 220 200" role="img" aria-label="バナーのついたハートのイラスト">
+      <g fill="#f4b81a" stroke="#111" stroke-width="3" stroke-linejoin="round">
+        <path d="M28 36 L33 52 L49 57 L33 62 L28 78 L23 62 L7 57 L23 52 Z"/>
+        <path d="M192 18 L196 32 L210 36 L196 40 L192 54 L188 40 L174 36 L188 32 Z"/>
+      </g>
+      <path d="M110 176 C40 126 22 82 44 52 C64 24 102 32 110 62 C118 32 156 24 176 52 C198 82 180 126 110 176 Z"
+            fill="#d4271f" stroke="#111" stroke-width="6" stroke-linejoin="round"/>
+      <path d="M58 68 C58 56 70 48 82 52" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round"/>
+      <path d="M8 100 L42 100 L42 142 L8 142 L22 121 Z" fill="#a81c15" stroke="#111" stroke-width="5" stroke-linejoin="round"/>
+      <path d="M212 100 L178 100 L178 142 L212 142 L198 121 Z" fill="#a81c15" stroke="#111" stroke-width="5" stroke-linejoin="round"/>
+      <rect x="30" y="88" width="160" height="42" fill="#f4b81a" stroke="#111" stroke-width="5" stroke-linejoin="round"/>
+      <text x="110" y="119" text-anchor="middle" font-family="'Alfa Slab One',serif" font-size="28" fill="#111">NFC</text>
+    </svg>
     <div class="eyebrow">How to write</div>
     <h1 class="title-en">NFC TAG</h1>
     <div class="ribbon">書き込みガイド</div>
     <p class="sub">タップひとつでリンクへ。購入後、自分の手で書き込む3ステップ。</p>
   </div>
-  <div class="stripe"></div>
 </header>
 
 <div class="sec wrap">
@@ -226,7 +251,7 @@
     <li class="step">
       <div class="step-num">1</div>
       <div class="step-title">「書く」を開く</div>
-      <div class="step-desc">NFC Toolsを開き、下部メニューの<code>書く</code>をタップ。</div>
+      <div class="step-desc">NFC Toolsを開き、<code>書く</code>をタップ。</div>
     </li>
     <li class="step">
       <div class="step-num">2</div>
@@ -236,12 +261,12 @@
     <li class="step">
       <div class="step-num">3</div>
       <div class="step-title">リンクを入力</div>
-      <div class="step-desc">URL欄に<code>https://</code>から入力。SNSの場合は編集をタップ→対象のSNSを選択→ユーザー名またはURLを入力。</div>
+      <div class="step-desc">URLの<code>//</code>より前（<code>https://</code>など）は、入力せず<code>選択</code>します。入力するのは<code>//</code>以降だけです。<br>例：<code>https://example.com</code> なら <code>example.com</code> と入力。<br>SNSの場合は編集をタップ→対象のSNSを選択→ユーザー名またはURLを入力。ユーザー名に<code>@</code>は不要です。</div>
     </li>
     <li class="step">
       <div class="step-num">4</div>
       <div class="step-title">書き込み開始</div>
-      <div class="step-desc">右上の<code>✓</code>をタップ→画面下部の<code>書き込み</code>をタップ。</div>
+      <div class="step-desc"><code>✓</code>をタップ→<code>書き込み</code>をタップ。</div>
     </li>
     <li class="step">
       <div class="step-num">5</div>
@@ -267,7 +292,34 @@
 </div>
 
 <div class="sec wrap">
-  <div class="sec-head"><span class="sec-num">4</span><span class="sec-title">うまく書き込めない時</span></div>
+  <div class="sec-head"><span class="sec-num">4</span><span class="sec-title">書き換える場合</span></div>
+  <ol class="steps">
+    <li class="step">
+      <div class="step-num">1</div>
+      <div class="step-title">前回のレコードを確認</div>
+      <div class="step-desc"><code>書く</code>を開き、前回のレコードが一覧に残っていないか確認。</div>
+    </li>
+    <li class="step">
+      <div class="step-num">2</div>
+      <div class="step-title">不要なレコードを削除</div>
+      <div class="step-desc">残っているレコードを削除します。タグを消去してから書き込むと確実です。<br>操作の名称や場所は、iPhoneとAndroidで異なる場合があります。</div>
+    </li>
+    <li class="step">
+      <div class="step-num">3</div>
+      <div class="step-title">新しい内容を書き込む</div>
+      <div class="step-desc">「書き込み手順」の2〜6と同じ流れで、新しいレコードを追加して書き込みます。</div>
+    </li>
+    <li class="step">
+      <div class="step-num">4</div>
+      <div class="step-title">1件だけか確認</div>
+      <div class="step-desc"><code>読み取り</code>で、新しいURLが1件だけ入っているか確認。</div>
+    </li>
+  </ol>
+  <div class="note">ロックしたタグは書き換えできません。</div>
+</div>
+
+<div class="sec wrap">
+  <div class="sec-head"><span class="sec-num">5</span><span class="sec-title">うまく書き込めない時</span></div>
   <details>
     <summary>反応がない・書き込めない</summary>
     <p>金属製のスマホケースやカードがスマホとタグの間に挟まってないか確認。まずはケースを外して試してみてください。</p>
@@ -284,14 +336,18 @@
     <summary>中古・使い回しのタグを使う場合</summary>
     <p>書き込み前に一度フォーマット（消去）してから。新品タグは基本未ロック状態なので、そのまま書き込み可能です。</p>
   </details>
+  <details>
+    <summary>書き換えたのに古いリンクが開く</summary>
+    <p>前回のレコードが残っている可能性があります。書き込み前に、一覧の不要なレコードを削除してください。タグを消去してから書き込むと確実です（操作の名称や場所は、iPhoneとAndroidで異なる場合があります）。</p>
+  </details>
 </div>
 
 <div class="sec wrap">
-  <div class="sec-head"><span class="sec-num">5</span><span class="sec-title">最終チェック</span></div>
+  <div class="sec-head"><span class="sec-num">6</span><span class="sec-title">最終チェック</span></div>
   <div id="checklist">
     <div class="check-item">
       <div class="box"><svg width="12" height="9" viewBox="0 0 12 9" fill="none"><path d="M1 4.5L4.2 7.5L11 1" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-      <span class="clabel">「読み取り」タブでURLが正しいか確認</span>
+      <span class="clabel">「読み取り」タブでURLが正しいか、レコードが1件だけか確認</span>
     </div>
     <div class="check-item">
       <div class="box"><svg width="12" height="9" viewBox="0 0 12 9" fill="none"><path d="M1 4.5L4.2 7.5L11 1" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
